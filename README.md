@@ -14,6 +14,48 @@ Before running this project, ensure you have the following installed:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
+## Available Commands
+
+This project comes with several convenient aliases to help you work with the Symfony application inside Docker containers. Add these to your shell configuration or use the provided `bash_aliases.sh` file.
+
+### Project Initialization
+```bash
+docker-sf-init        # Create a new Symfony project without Git initialization
+```
+
+### Symfony Commands
+```bash
+docker-sf            # Run Symfony console commands
+                    # Example: docker-sf cache:clear
+```
+
+### Composer Commands
+```bash
+docker-composer     # Run Composer commands
+                    # Example: docker-composer require symfony/orm-pack
+```
+
+### Code Quality & Testing
+```bash
+docker-stan        # Run PHPStan static analysis
+docker-test        # Run PHPUnit tests
+```
+
+### Using the Aliases
+
+1. You can source the aliases file directly:
+   ```bash
+   source bash_aliases.sh
+   ```
+
+2. Or add this line to your `~/.bashrc` or `~/.zshrc`:
+   ```bash
+   source /path/to/project/bash_aliases.sh
+   ```
+
+> **Note**: All commands are executed inside the PHP container, so you don't need to worry about having PHP, Composer, or Symfony installed on your host machine.
+
+
 ## Setup
 ### 1. Clone the repository
 
@@ -38,7 +80,9 @@ This will start the following services:
 - MySQL (accessible internally, but Adminer is available)
 - Adminer (available on port 8080)
 
-### 3. Access the services
+### 3. Create the Symfony project and access the services
+
+Refer to the Available commands section to create a new project via `docker-sf-init`.
 
 - **Symfony app**: [http://localhost](http://localhost)
 - **Adminer**: [http://localhost:8080](http://localhost:8080)
@@ -62,9 +106,6 @@ environment:
 ```
 
 ## File Structure
-
-graphql
-
 
 ```
 project-directory/
@@ -110,7 +151,11 @@ This will stop and remove all containers, networks, and volumes created by docke
 
 ## Disclaimer
 
-While this setup is designed for Symfony, it is not exclusive to it. The Docker configuration (PHP-FPM, Nginx, MySQL, Adminer) can be easily adapted to work with other PHP frameworks or applications such as Laravel, Zend, or custom PHP projects. Just replace the Symfony-specific parts with your framework of choice, and you're good to go!
+While this setup is designed for Symfony, it is not exclusive to it. The Docker configuration (PHP-FPM, Nginx, MySQL, Adminer) can be easily adapted to work with other PHP frameworks or applications such as Laravel, Zend, or custom PHP projects.
+
+Feel free to checkout my [Docker Laravel Skeleton](https://github.com/hben191/docker-laravel-skeleton).
+
+Just replace the Symfony-specific parts with your framework of choice, and you're good to go!
 
 ## Happy Coding! 🎉🚀
 
